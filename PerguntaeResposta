@@ -1,0 +1,157 @@
+package Fundamentos;
+
+import java.util.Scanner;
+
+public class PerguntaeResposta {
+
+	public static void main(String[] args) {
+
+		Scanner entrada = new Scanner(System.in);
+
+		String texto = "Paz do Senhor Jesus. Bem vindo ao quiz bíblico.";
+		int pontos = 0;
+		int opcao = 0;
+		// Linha de cima
+		System.out.print("*");
+		for (int i = 0; i < 47; i++) {
+			System.out.print("-");
+		}
+		System.out.println("*");
+
+		// Linha com texto
+		System.out.print("|");
+		System.out.print(texto);
+
+		System.out.println("|");
+
+		// Linhas vazias do meio
+		for (int i = 0; i < 1; i++) {
+			System.out.print("|");
+			for (int j = 0; j < 47; j++) {
+				System.out.print(" ");
+			}
+			System.out.println("|");
+		}
+
+		// Linha de baixo
+		System.out.print("*");
+		for (int i = 0; i < 46; i++) {
+			System.out.print("-");
+		}
+		System.out.println("*");
+		while (true) {
+			System.out.print("\nPara entrar no menu, digite MENU: ");
+			String menu = entrada.nextLine();
+
+			if (menu.equals("Menu") || menu.equals("menu") || menu.equals("MENU")) {
+
+				break;
+			} else {
+				System.out.println("\nEntrada inválida! Digite novamente.");
+			}
+		}
+
+		int largura = 47;
+
+		// Linha de cima
+		System.out.print("*");
+		for (int i = 0; i < largura; i++)
+			System.out.print("-");
+		System.out.println("*");
+
+		while (opcao != 3) {
+			// MENU
+			System.out.print("| MENU DO GAME");
+			for (int i = " MENU DO GAME".length(); i < largura; i++) {
+				System.out.print(" ");
+			}
+			System.out.println("|");
+
+			System.out.print("| 1 - COMEÇAR O JOGO");
+			for (int i = " 1 - COMEÇAR O JOGO".length(); i < largura; i++) {
+				System.out.print(" ");
+			}
+			System.out.println("|");
+
+			System.out.print("| 2 - PONTUAÇÃO");
+			for (int i = " 2 - PONTUAÇÃO".length(); i < largura; i++) {
+				System.out.print(" ");
+			}
+			System.out.println("|");
+
+			System.out.print("| 3 - SAIR");
+			for (int i = " 3 - SAIR".length(); i < largura; i++) {
+				System.out.print(" ");
+			}
+			System.out.println("|");
+
+			System.out.print("| Escolha uma opção:");
+			opcao = entrada.nextInt(); // <-- LÊ A OPÇÃO
+			entrada.nextLine();
+
+			// Linha de baixo
+			System.out.print("*");
+			for (int i = 0; i < largura; i++)
+				System.out.print("-");
+			System.out.println("*");
+			System.out.println("");
+
+			switch (opcao) {
+			case 1:
+
+				System.out.println("Iniciando o quiz...");
+				System.out.println("");
+				System.out.println("1. Com quantos ANOS Jesus começou o seu ministério?  ");
+				String apostolos = entrada.nextLine();
+
+				if (apostolos.equals("30") || apostolos.equals("30 anos")) {
+					System.out.println("Parabéns, você acertou.");
+					pontos++;
+				} else {
+					System.out.println("Você errou. Vamos ler mais a biblia? 😂");
+				}
+
+				System.out.println("");
+				System.out.println("2. Quantos discipulos JESUS tinha? ");
+				String discipulos = entrada.nextLine();
+
+				if (discipulos.equals("12") || discipulos.equals("12 discipulos")) {
+					System.out.println("Parabéns, irmão(a) você acertou.");
+					pontos++;
+				} else {
+					System.out.println("Desanima não, na próxima vamos vê se você consegue acertar.");
+				}
+
+				System.out.println("\n3. Quantos livros tem a biblia? ");
+				String livros = entrada.nextLine();
+
+				if (livros.equals("66") || livros.equals("66 livros")) {
+					System.out.println("Parabéns, você é conhecedor da palavra em. \n");
+					pontos++;
+				} else {
+					System.out.println("\nInfelizmente essa você errou...");
+				}
+
+				break;
+			case 2:
+				if (pontos == 3) {
+					System.out.println("Parabéns. Você acertou todas as questoes.");
+				} else if (pontos == 2 || pontos == 1) {
+					System.out.println("Você pelo acertou " + pontos + " pelo menos\n");
+				} else {
+					System.out.println("Você infelizmente não acertou nenhum quiz.\n");
+				}
+
+				break;
+			case 3:
+				System.out.println("Saindo...");
+				break;
+			default:
+				System.out.println("Número inválido.");
+				break;
+			}
+
+		}
+		entrada.close();
+	}
+}
